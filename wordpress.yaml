@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: wordpress
+  name: wordpress
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: wordpress
+  template:
+    metadata:
+      labels:
+        app: wordpress
+    spec:
+      containers:
+      - image: wordpress
+        name: wordpress
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: wordpress-vol
+          mountPath: /var
+        env:
+        - name: WORDPRESS_DEBUG
+          value: "1"
+        - name: WORDPRESS_DB_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: configmap
+              key: mysql-service
+        - name: WORDPRESS_DB_USER
+          valueFrom:
+            secretKeyRef:
+              name: secrets
+              key: mysql-user
+        - name: WORDPRESS_DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: secrets
+              key: mysql-password
+        - name: WORDPRESS_DB_DATABASE
+          valueFrom:
+            configMapKeyRef:
+              name: configmap
+              key: mysql-database
+      volumes:
+      - name: wordpress-vol
+        persistentVolumeClaim:
+          claimName: wordpress-pvc

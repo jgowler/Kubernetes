@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: wordpress-service
+  name: wordpress-service
+  namespace: default
+spec:
+  clusterIP: 10.43.26.226
+  clusterIPs:
+  - 10.43.26.226
+  externalTrafficPolicy: Cluster
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - name: wordpress-service-ports
+    nodePort: 31313
+    port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: wordpress
+  type: NodePort
