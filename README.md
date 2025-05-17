@@ -1,6 +1,14 @@
-Kubernetes - Self hosted Wordpress site with MySql DB
+# 🌐 Kubernetes: Self-Hosted WordPress with MySQL DB
 
-This project is designed to test my own skills of self-hosting a website, from purchasing the domain all the way through to storing the website data using MySql and a persistant storage.
-The idea is to have a reliable website which would be more robust, with the ability to retain and restore data through pod deletions.
+A project to test and refine my **self-hosting skills**—from domain registration to **data persistence** using MySQL in Kubernetes.
 
-Once completed, this website will provide a guide through my process and how it came to exists, with tips and tricks I discovered along the way.
+## 🏗️ Project Goals
+- Deploy a **reliable WordPress website** in a Kubernetes environment.
+- Ensure **data retention and recovery**, even after pod deletions.
+- Implement **persistent storage** for MySQL databases.
+
+## 📖 Learning & Documentation
+Once completed, this project will serve as a **step-by-step guide** covering:
+- My journey to **self-hosting** and its challenges.
+- Insights into **Kubernetes configurations** for WordPress.
+- **Tips & tricks** discovered along the way.
